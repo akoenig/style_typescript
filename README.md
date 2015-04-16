@@ -443,7 +443,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
           this.fullName = firstName + ' ' + lastName;
       }
 
-      set age (age: number) {
+      set age (age: number): number {
           if (age > 200) {
               this._age = 0;
           } else {
@@ -451,8 +451,8 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
           }
       }
 
-      toString() {
-          return this.__fullName;
+      toString(): string {
+          return `Name: ${this.fullName} is ${this.age} years old`;
       }
   }
   ```
