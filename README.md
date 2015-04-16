@@ -274,7 +274,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
   ```typescript
   // bad
-  function createGreeting(name: string): string {
+  function createGreeting(name: string): Function {
       var message = 'Hello ';
 
       return greet;
@@ -285,7 +285,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   }
   
   // good
-  function createGreeting(name: string): string {
+  function createGreeting(name: string): Function {
       var message = 'Hello ';
 
       function greet() {
