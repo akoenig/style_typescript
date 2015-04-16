@@ -42,7 +42,7 @@ This is the TypeScript style guide that we use internally at Platypi! It is *sem
   1. [=== and !== Operators](#===-and-!==-Operators)
   1. [Eval](#eval)
   1. [TSLint](#tslint)
-  1. [License](#license) 
+  1. [License](#license)
 
 ## Introduction
 When developing software as an organization, the value of the software produced is directly affected by the quality of the codebase. Consider a project that is developed over many years and handled/seen by many different people. If the project uses a consistent coding convention it is easier for new developers to read, preventing a lot of time/frustration spent figuring out the structure and characteristics of the code. For that purpose, we need to make sure we adhere to the same coding conventions across all of our products. This will not only help new developers, but it will also aid in quickly identifying potential flaws in the code, thereby reducing the brittleness of the code.
@@ -56,20 +56,20 @@ When developing software as an organization, the value of the software produced 
 
 ## Files
   - All TypeScript files must have a ".ts" extension.
-  - They should be all lower case, and only include letters, numbers, and periods. 
+  - They should be all lower case, and only include letters, numbers, and periods.
   - It is OK (even recommended) to separate words with periods (e.g. `my.view.html`).
   - All files should end in a new line. This is necessary for some Unix systems.
 
 **[top](#table-of-contents)**
 
 ## Indentation
-  - The unit of indentation is four spaces. 
+  - The unit of indentation is four spaces.
   - **Never use tabs**, as this can lead to trouble when opening files in different IDEs/Text editors. Most text editors have a configuration option to change tabs to spaces.
 
 **[top](#table-of-contents)**
 
 ## Line Length
-  - Lines must not be longer than 140 characters. 
+  - Lines must not be longer than 140 characters.
   - When a statement runs over 140 characters on a line, it should be broken up, ideally after a comma or operator.
 
 **[top](#table-of-contents)**
@@ -80,16 +80,16 @@ When developing software as an organization, the value of the software produced 
   ```typescript
   // bad
   var greeting = "Hello World!";
-  
+
   // good
   var greeting = 'Hello World!';
-  
+
   // bad
   var html = "<div class='bold'>Hello World</div>";
-  
+
   // bad
   var html = '<div class=\'bold\'>Hello World</div>';
-  
+
   // good
   var html = '<div class="bold">Hello World</div>';
   ```
@@ -97,9 +97,9 @@ When developing software as an organization, the value of the software produced 
 **[top](#table-of-contents)**
 
 ## Comments
-  - Comments are strongly encouraged. It is very useful to be able to read comments and understand the intentions of a given block of code. 
-  - Comments need to be clear, just like the code they are annotating. 
-  - Make sure your comments are meaningful. 
+  - Comments are strongly encouraged. It is very useful to be able to read comments and understand the intentions of a given block of code.
+  - Comments need to be clear, just like the code they are annotating.
+  - Make sure your comments are meaningful.
 
 The following example is a case where a comment is completely erroneous, and can actually make the code harder to read.
 
@@ -107,15 +107,15 @@ The following example is a case where a comment is completely erroneous, and can
   // Set index to zero.
   var index = 0;
   ```
-    
-  - All public functions must have a comment block `/**...*/` using [JSDoc](http://usejsdoc.org/) style comments. 
+
+  - All public functions must have a comment block `/**...*/` using [JSDoc](http://usejsdoc.org/) style comments.
 
 JSDocs can be interpreted by IDEs for better intellisense. Below is an example of a JSDoc comment block for a function.
 
   ```typescript
   /**
    * Takes in a name and returns a greeting string.
-   * 
+   *
    * @param name The name of the greeted person.
    */
   function getGreeting(name: string): string {
@@ -125,9 +125,9 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
 ### Class
 
-  - All classes must have block comments `/**...*/` for all public variables and functions. 
-  - All public functions should use [JSDoc](http://usejsdoc.org/) style comments. 
-  - Functions need to have a comment explaining what the function does, and all of the input parameters need to be annotated with `@param`. 
+  - All classes must have block comments `/**...*/` for all public variables and functions.
+  - All public functions should use [JSDoc](http://usejsdoc.org/) style comments.
+  - Functions need to have a comment explaining what the function does, and all of the input parameters need to be annotated with `@param`.
   - The class should include a block comment containing the description of the class
   - The constructor should contain a JSDoc comment annotating any input parameters.
 
@@ -138,28 +138,28 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   class Person {
       /**
        * Returns a new Person with the specified name.
-       * 
+       *
        * @param name The name of the new Person.
        */
       static GetPerson(name: string): Person {
           return new Person(name);
       }
-      
+
       /**
        * @param name The name of the new Person.
        */
       constructor(public name: string) { }
 
       /**
-       * Instructs this Person to walk for a certain amount 
+       * Instructs this Person to walk for a certain amount
        * of time.
        *
-       * @param millis The number of milliseconds the Person 
+       * @param millis The number of milliseconds the Person
        * should walk.
        */
       walkFor(millis: number) {
           console.log(this.name + ' is now walking.');
-          
+
           setTimeout(() => {
               console.log(this.name + ' has stopped walking.');
           }, millis);
@@ -171,20 +171,20 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
 ### Inline
 
-  - Inline comments are comments inside of complex statements (loops, functions, etc). 
-  - Use `//` for all inline comments. 
-  - Keep comments clear and concise. 
+  - Inline comments are comments inside of complex statements (loops, functions, etc).
+  - Use `//` for all inline comments.
+  - Keep comments clear and concise.
   - Place inline comments on a newline above the line they are annotating
   - Put an empty line before the comment.
 
   ```typescript
   // bad
   var lines: Array<string>; // Holds all the lines in the file.
-  
+
   // good
   // Holds all the lines in the file.
   var lines: Array<string>;
-  
+
   // bad
   function walkFor(name: string, millis: number) {
       console.log(name + ' is now walking.');
@@ -193,11 +193,11 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
           console.log(name + ' has stopped walking.');
       }, millis);
   }
-  
+
   // good
   function walkFor(name: string, millis: number) {
       console.log(name + ' is now walking.');
-      
+
       // Wait for millis milliseconds to stop walking
       setTimeout(() => {
           console.log(name + ' has stopped walking.');
@@ -209,59 +209,58 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
 ### Todo and XXX
 
-`TODO` and `XXX` annotations help you quickly find things that need to be fixed/implemented. 
+`TODO` and `XXX` annotations help you quickly find things that need to be fixed/implemented.
 
-  - Use `// TODO:` to annotate solutions that need to be implemented. 
-  - Use `// XXX:` to annotate problems the need to be fixed. 
-  - It is best to write code that doesn't need `TODO` and `XXX` annotations, but sometimes it is unavoidable. 
+  - Use `// TODO:` to annotate solutions that need to be implemented.
+  - Use `// XXX:` to annotate problems the need to be fixed.
+  - It is best to write code that doesn't need `TODO` and `XXX` annotations, but sometimes it is unavoidable.
 
 **[top](#table-of-contents)**
 
 ## Variable Declarations
 
-  - All variables must be declared prior to using them. This aids in code readability and helps prevent undeclared variables from being hoisted onto the global scope. 
-  
+  - All variables must be declared prior to using them. This aids in code readability and helps prevent undeclared variables from being hoisted onto the global scope.
+
   ```typescript
   // bad
   console.log(a + b);
 
-  var a = 2,
-      b = 4;
+  var a = 2;
+  var b = 4;
 
   // good
-  var a = 2,
-      b = 4;
-      
+  var a = 2;
+  var b = 4;
+
   console.log(a + b);
   ```
 
-  - Implied global variables should never be used. 
+  - Implied global variables should never be used.
   - You should never define a variable on the global scope from within a smaller scope.
-  
+
   ```typescript
   // bad
   function add(a: number, b: number) {
       // c is on the global scope!
       c = 6;
-      
+
       return a + b + c;
   }
   ```
 
-  - Use one `var` keyword to define a block of variables.
   - Declare each variable on a newline.
-  
+
   ```typescript
   // bad
-  var a = 2;
-  var b = 2;
-  var c = 4;
-
-  // good
   var a = 2,
       b = 2,
       c = 4;
-  
+
+  // good
+  var a = 2,
+  var b = 2,
+  var c = 4;
+
   // bad
   // b will be defined on global scope.
   var a = b = 2, c = 4;
@@ -274,7 +273,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
   ```typescript
   // bad
-  function createGreeting(name: string): Function {
+  function createGreeting (name: string): Function {
       var message = 'Hello ';
 
       return greet;
@@ -283,12 +282,12 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
           return message + name + '!';
       }
   }
-  
+
   // good
-  function createGreeting(name: string): Function {
+  function createGreeting (name: string): Function {
       var message = 'Hello ';
 
-      function greet() {
+      function greet () {
           return message + name + '!';
       }
 
@@ -296,17 +295,17 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   }
   ```
 
-  - There should be no space between the name of the function and the left parenthesis `(` of its parameter list.
+  - There should be a space between the name of the function and the left parenthesis `(` of its parameter list.
   - There should be one space between the right parenthesis `)` and the left curly `{` brace that begins the statement body.
 
   ```typescript
   // bad
-  function foo (){
+  function foo(){
       // ...
   }
-  
+
   // good
-  function foo() {
+  function foo () {
       // ...
   }
   ```
@@ -314,18 +313,18 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   - The body of the function should be indented 4 spaces.
   - The right curly brace `}` should be on a new line.
   - The right curly brace `}` should be aligned with the line containing the left curly brace `{` that begins the function statement.
-  
+
   ```typescript
   // bad
-  function foo(): string {
+  function foo (): string {
     return 'foo';}
 
   // good
-  function foo(): string {
+  function foo (): string {
       return 'foo';
   }
   ```
-  
+
   - For each function parameter
     - There should be no space between the parameter and the colon `:` indicating the type declaration.
     - There should be a space between the colon `:` and the type declaration.
@@ -335,7 +334,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   function greet(name:string) {
     // ...
   }
-  
+
   // good
   function greet(name: string) {
     // ...
@@ -353,21 +352,21 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   // bad
   clickAlert() {
       var element = document.querySelector('div');
-      
+
       this.foo = 'foo';
-      
+
       element.addEventListener('click', function(ev: Event) {
           // this.foo does not exist!
           alert(this.foo);
       });
   }
-  
+
   // good
   clickAlert() {
       var element = document.querySelector('div');
-      
+
       this.foo = 'foo';
-      
+
       element.addEventListener('click', (ev: Event) => {
           // TypeScript allows this.foo to exist!
           alert(this.foo);
@@ -381,7 +380,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   ```typescript
   // bad
   element.addEventListener('click', (ev: Event)=>{alert('foo');});
-  
+
   // good
   element.addEventListener('click', (ev: Event) => {
       alert('foo');
@@ -412,7 +411,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   - Always define the return type of functions.
   - If TypeScript is capable of implicitly determining the return type of a function, then it is unnecessary to define the return type.
   - Always define the types of variables/parameters unless TypeScript can implicitly infer their type.
-  
+
   ```typescript
   // bad
   var numbers = [];
@@ -430,27 +429,28 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
   - Classes/Constructors should use UpperCamelCase (PascalCase).
   - `Private` and `private static` members in classes should be denoted with the `private` keyword.
-  - `Private` and `private static` members should be prefaced with 2 underscores `__`.
-  - `Protected` members in classes do not use the `private` keyword.
-  - `Protected` members in classes should be prefaced with 1 underscore `_`.
+  - `Private` variables should be prefixed with an `_` **only when** there is a getter / setter for it.
+  - There should not be a getter / setter for a variable when it's only aim is to read / write a `private` variable - use `public` variables instead.
 
   ```typescript
   class Person {
-      private __fullName: string;
-      
-      constructor(public firstName: string, public lastName: string) {
-          this.__fullName = firstName + ' ' + lastName;
+      private fullName: string;
+      private _age: number;
+
+      public tasks: Array<string> = [];
+
+      constructor(firstName: string, lastName: string) {
+          this.fullName = firstName + ' ' + lastName;
       }
-      
-      _walkFor(millis: number) {
-          console.log(this.__fullName + ' is now walking.');
-          
-          // Wait for millis milliseconds to stop walking
-          setTimeout(() => {
-              console.log(this.__fullName + ' has stopped walking.');
-          }, millis);
+
+      set age (age: number) {
+          if (age > 200) {
+              this._age = 0;
+          } else {
+              this._age = age;
+          }
       }
-      
+
       toString() {
           return this.__fullName;
       }
@@ -464,7 +464,7 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
   - Interfaces should use UpperCamelCase.
   - Interfaces should be prefaced with the capital letter I.
   - Only `public` members should be in an interface, leave out `protected` and `private` members.
-  
+
   ```typescript
   interface IPerson {
       firstName: string;
@@ -477,7 +477,15 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
 ### Constants
 
-  - All constants should use UPPER_SNAKE_CASE.
+  - All constants should use UPPER_SNAKE_CASE and should be declared with the `const` keyword:
+
+  ```typescript
+  // bad
+  var ENDPOINT_URI = '...';
+
+  // good
+  const ENDPOINT_URI = '...';
+  ```
 
 **[top](#table-of-contents)**
 
@@ -487,13 +495,13 @@ JSDocs can be interpreted by IDEs for better intellisense. Below is an example o
 
   - Each line should contain at most one statement.
   - A semicolon should be placed at the end of every simple statement.
-  
+
   ```typescript
   // bad
   var greeting = 'Hello World'
 
   alert(greeting)
-  
+
   // good
   var greeting = 'Hello World';
 
@@ -512,19 +520,19 @@ Compound statements are statements containing lists of statements enclosed in cu
   ```typescript
   // bad
   if (condition === true) { alert('Passed!'); }
-  
+
   // good
-  if (condition === true) { 
-      alert('Passed!'); 
+  if (condition === true) {
+      alert('Passed!');
   }
   ```
   - The left curly brace `{` should be at the end of the line that begins the compound statement.
   - The right curly brace `}` should begin a line and be indented to align with the line containing the left curly brace `{`.
-  
+
   ```typescript
   // bad
   if (condition === true)
-  { 
+  {
       alert('Passed!');
   }
 
@@ -533,9 +541,9 @@ Compound statements are statements containing lists of statements enclosed in cu
       alert('Passed!');
   }
   ```
-  
+
   - **Braces `{}` must be used around all compound statements** even if they are only single-line statements.
-  
+
   ```typescript
   // bad
   if (condition === true) alert('Passed!');
@@ -543,7 +551,7 @@ Compound statements are statements containing lists of statements enclosed in cu
   // bad
   if (condition === true)
       alert('Passed!');
-  
+
   // good
   if (condition === true) {
       alert('Passed!');
@@ -557,7 +565,7 @@ If you do not add braces `{}` around compound statements, it makes it very easy 
       alert('Passed!');
       return condition;
   ```
-  
+
 It appears the intention of the above code is to return if `condition === true`, but without braces `{}` the return statement will be executed regardless of the condition.
 
   - Compount statements do not need to end in a semicolon `;` with the exception of a `do { } while();` statement.
@@ -568,10 +576,10 @@ It appears the intention of the above code is to return if `condition === true`,
 
   - If a `return` statement has a value you should not use parenthesis `()` around the value.
   - The return value expression must start on the same line as the `return` keyword.
-  
+
   ```typescript
   // bad
-  return 
+  return
       'Hello World!';
 
   // bad
@@ -582,7 +590,7 @@ It appears the intention of the above code is to return if `condition === true`,
   ```
 
   - It is recommended to take a return-first approach whenever possible.
-  
+
   ```typescript
   // bad
   function getHighestNumber(a: number, b: number): number {
@@ -594,7 +602,7 @@ It appears the intention of the above code is to return if `condition === true`,
 
       return out;
   }
-  
+
   // good
   function getHighestNumber(a: number, b: number): number {
       if(a >= b) {
@@ -612,7 +620,7 @@ It appears the intention of the above code is to return if `condition === true`,
   function getPerson(name: string) {
       return new Person(name);
   }
-  
+
   // good
   function getPerson(name: string): Person {
       return new Person(name);
@@ -624,7 +632,7 @@ It appears the intention of the above code is to return if `condition === true`,
 ### If
 
   - Alway be explicit in your `if` statement conditions.
-  
+
   ```typescript
   // bad
   function isString(str: any) {
@@ -645,13 +653,13 @@ If statements should take the following form:
   if (/* condition */) {
       // ...
   }
-  
+
   if (/* condition */) {
       // ...
   } else {
       // ...
   }
-  
+
   if (/* condition */) {
       // ...
   } else if (/* condition */) {
@@ -671,10 +679,10 @@ For statements should have the following form:
   for(/* initialization */; /* condition */; /* update */) {
       // ...
   }
-  
+
   var keys = Object.keys(/* object */),
       length = keys.length;
-  
+
   for(var i = 0; i < length; ++i) {
       // ...
   }
@@ -743,7 +751,7 @@ Try statements should have the following form:
   } catch (error: Error) {
       // ...
   }
-  
+
   try {
       // ...
   } catch (error: Error) {
@@ -773,7 +781,7 @@ Try statements should have the following form:
 Blank lines improve code readability by allowing the developer to logically group code blocks. Blank spaces should be used in the following circumstances.
 
   - A keyword followed by left parenthesis `(` should be separated by 1 space.
-  
+
   ```typescript
   // bad
   if(condition) {
@@ -791,25 +799,25 @@ Blank lines improve code readability by allowing the developer to logically grou
   ```typescript
   // bad
   var sum = a+b;
-  
+
   // good
   var sum = a + b;
-  
+
   // bad
   var name = person . name;
-  
+
   // good
   var name = person.name;
-  
+
   // bad
   var item = items [4];
-  
+
   // good
   var item = items[4];
   ```
 
   - No space should separate a unary/incremental operator `!x, -x, +x, ~x, ++x, --x` and its operand.
-  
+
   ```typescript
   // bad
   var neg = - a;
@@ -817,9 +825,9 @@ Blank lines improve code readability by allowing the developer to logically grou
   // good
   var neg = -a;
   ```
-  
+
   - Each semicolon `;` in the control part of a `for` statement should be followed with a space.
-  
+
   ```typescript
   // bad
   for(var i = 0;i < 10;++i) {
@@ -850,11 +858,11 @@ Blank lines improve code readability by allowing the developer to logically grou
   while (node = node.next) {
       // ...
   }
-  
+
   // good
   while (typeof node === 'object') {
       node = node.next;
-      
+
       // ...
   }
   ```
